@@ -3,14 +3,14 @@ import java.util.Scanner;
 
 public class Quiz {
 
- private Scanner scan = new Scanner(System.in);
- private ArrayList<Question> arrayOfQuestions = new ArrayList<Question>();
+  private Scanner scan = new Scanner(System.in);
+  private ArrayList<Question> arrayOfQuestions = new ArrayList<Question>();
 
   Quiz() {}
 
   private int getQuestionInt() {
     for (int i = 0; i < arrayOfQuestions.size(); i++) {
-      System.out.println(i  + ". " + arrayOfQuestions.get(i).getText());
+      System.out.println(i + ". " + arrayOfQuestions.get(i).getText());
     }
     int num = Integer.parseInt(scan.nextLine());
     return num;
@@ -28,7 +28,7 @@ public class Quiz {
 
   public void removeQuestion() {
     System.out.println("\nChoose the question to remove?");
-        int questionInt = getQuestionInt();
+    int questionInt = getQuestionInt();
     arrayOfQuestions.remove(questionInt);
   }
 
