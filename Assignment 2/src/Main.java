@@ -33,39 +33,31 @@ public class Main {
   }
 
   private static void bid(Lot lot) {
-    int bid = 0;
     System.out.println("How much would you like to bid?");
     System.out.println("Minimum bid is " + lot.nextBid());
-    bid = Integer.parseInt(scan.nextLine());
-    while (bid < lot.nextBid()) {
+    int bid = Integer.parseInt(scan.nextLine());
+    if (bid < lot.nextBid()) {
       System.out.println("This bid is too low! Please enter a valid bid");
       System.out.println("Minimum bid is " + lot.nextBid());
-      bid = Integer.parseInt(scan.nextLine());
-    }
-    lot.setCurrentBid(bid);
+    } else lot.setCurrentBid(bid);
   }
 
   private static void mainMenu(ArrayList<Lot> lotsArr) {
     Lot currentLot = null;
     int num = 0;
-    // System.out.println("\nWe are not currently bidding\n");
-    // mainPrompt();
-    // num = Integer.parseInt(scan.nextLine());
     while (num != 5) {
+      if (
+        currentLot == null || currentLot.getDescription().equals("Unknown Item")
+      ) {
+        System.out.println("\nWe are not currently bidding\n");
+      } else {
+        System.out.println(currentLot);
+      }
+      mainPrompt();
+      num = Integer.parseInt(scan.nextLine());
       if (num < 1 || num > 5) {
         System.out.println("Please enter a valid number");
       } else {
-        if (
-          currentLot == null ||
-          currentLot.getDescription().equals("Unknown Item")
-        ) {
-          System.out.println("\nWe are not currently bidding\n");
-        } else {
-          System.out.println(currentLot);
-        }
-        mainPrompt();
-        num = Integer.parseInt(scan.nextLine());
-
         if (num == 1) {
           addItem(lotsArr);
         }
