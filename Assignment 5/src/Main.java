@@ -25,8 +25,6 @@ public class Main {
   }
 
   public static void main(String[] args) {
-    System.out.println(reverse("Hello"));
-    System.out.println(flip("^^^vvv"));
     for (int i = 1; i < 10; i++) {
       String fold_string = paperFold(i);
       System.out.println("For " + i + " folds we get: " + fold_string + "\n");

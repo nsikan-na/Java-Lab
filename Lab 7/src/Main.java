@@ -16,6 +16,7 @@ public class Main {
 
     while (!pass) {
       mainPrompt();
+
       System.out.println("Please choose an option");
       Integer option = Integer.parseInt(scan.nextLine());
       if (option == 0) {
