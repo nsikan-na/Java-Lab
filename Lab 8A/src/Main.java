@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+// Lab 8A
 public class Main {
 
   public static int recursive_multiply(int num1, int num2) {

@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e608e54-c583-4a78-85d7-278fe997cc3b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab 8A/src/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab 8A/src/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab 8A/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab 8A/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab 8B/src/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab 8B/src/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab 8B/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab 8B/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab 8B/src/tempCodeRunnerFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab 9/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab 9/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab 9/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab 9/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +27,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/14704/OneDrive/Documents/code/School/1322L/Assignment 5"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
