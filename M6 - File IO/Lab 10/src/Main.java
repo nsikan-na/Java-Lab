@@ -22,20 +22,29 @@ public class Main {
       String line1 = "";
       String line2 = "";
 
-      int lineCount = 1;
+      int line1Count = 1;
+      int line2Count = 1;
       while (file1Scan.hasNextLine() && file2Scan.hasNextLine()) {
         line1 = file1Scan.nextLine();
         line2 = file2Scan.nextLine();
         if (!line1.equals(line2)) {
-          System.out.println("\nLine " + lineCount);
+          System.out.println("\nLine " + line1Count);
           System.out.println("< " + line1);
           System.out.println("> " + line2);
         }
-        lineCount++;
+        if (file1Scan.hasNextLine()) {
+          line1Count++;
+        }
+        if (file2Scan.hasNextLine()) {
+          line2Count++;
+        }
       }
-      if (!file1Scan.hasNextLine() || !file2Scan.hasNextLine()) {
+      if (line1Count != line2Count) {
         System.out.println("\nFiles have a different number of lines\n");
       }
+      scan.close();
+      file1Scan.close();
+      file2Scan.close();
     } catch (Exception err) {
       System.out.println(err);
     }

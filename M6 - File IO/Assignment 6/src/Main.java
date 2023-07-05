@@ -19,7 +19,7 @@ public class Main {
         break;
       }
     }
-    //System.out.println("Json: "+json);
+    // System.out.println("JSON: " + json);
     String[] jsonParts = json.split(":");
     String priceLine = jsonParts[19];
     String justPrice = priceLine.replace("},\"GBP\"", "");
@@ -28,21 +28,24 @@ public class Main {
   }
 
   public static ArrayList<String> getData() {
-    ArrayList<String> arrList = new ArrayList<String>();
+    ArrayList<String> arrList = new ArrayList<>();
     try {
       String dataLine = "";
-      Socket mySocket = new Socket("www.api.coindesk.com", 80);
+      Socket mySocket = new Socket("api.coindesk.com", 80);
       OutputStream os = mySocket.getOutputStream();
       PrintWriter pw = new PrintWriter(os);
-      pw.println(
-        "GET http://api.coindesk.com/v1/bpi/currentprice.json HTTP/1.0\n\n"
-      );
+
+      pw.println("GET /v1/bpi/currentprice.json HTTP/1.0");
+      pw.println("Host: api.coindesk.com");
+      pw.println();
       pw.flush();
+
       Scanner scan = new Scanner(mySocket.getInputStream());
       while (scan.hasNextLine()) {
         dataLine = scan.nextLine();
         arrList.add(dataLine);
       }
+
       mySocket.close();
       scan.close();
     } catch (IOException err) {
@@ -63,8 +66,8 @@ public class Main {
         dataLine = scan.nextLine();
         String[] data = dataLine.split(":");
         String name = data[0];
-        int dollars = Integer.parseInt(data[1]);
-        float bitcoin = dollars * bitcoinPrice;
+        float dollars = Float.parseFloat(data[1]);
+        float bitcoin = dollars / bitcoinPrice;
         pw.println(name + ":" + bitcoin);
       }
       scan.close();
@@ -83,7 +86,7 @@ public class Main {
         dataLine = scan.nextLine();
         String[] data = dataLine.split(":");
         String name = data[0];
-        int numOfBitcoin = Integer.parseInt(data[1]);
+        float numOfBitcoin = Float.parseFloat(data[1]);
         System.out.println(name + ":$" + numOfBitcoin * bitcoinValue);
       }
       scan.close();
@@ -99,14 +102,19 @@ public class Main {
       File file = new File(fileName);
       Scanner scan = new Scanner(file);
       String dataLine = "";
+      String data = "";
       while (scan.hasNextLine()) {
         dataLine = scan.nextLine();
-        if (!dataLine.equals(personName)) {
-          scan.close();
-          throw new PersonNotFound();
+        data += dataLine;
+        if (dataLine.contains(personName)) {
+          break;
         }
-        price = Float.parseFloat(dataLine.split(":")[1]);
       }
+      if (!data.contains(personName)) {
+        scan.close();
+        throw new PersonNotFound();
+      }
+      price = Float.parseFloat(dataLine.split(":")[1]);
       scan.close();
     } catch (Exception err) {
       System.out.println(err);
@@ -120,22 +128,26 @@ public class Main {
       int num;
       do {
         System.out.println(
-          "One BitCoin is currently worth $" + getDollarPrice(getData())
+          "One Bitcoin is currently worth $" + getDollarPrice(getData())
         );
         System.out.println("1. Buy Bitcoin");
         System.out.println("2. See everyone's current value in USD");
-        System.out.println("3. See one persons gain/loss");
+        System.out.println("3. See one person's gain/loss");
         System.out.println("4. Quit");
         num = Integer.parseInt(scan.nextLine());
         switch (num) {
           case 1:
             {
-              buyBitCoin(getDollarPrice(getData()));
+              float bitcoinPrice = getDollarPrice(getData());
+              System.out.println("Bitcoin price: $" + bitcoinPrice);
+              buyBitCoin(bitcoinPrice);
               break;
             }
           case 2:
             {
-              getCurrentValue(getDollarPrice(getData()));
+              float bitcoinValue = getDollarPrice(getData());
+              System.out.println("Bitcoin value: $" + bitcoinValue);
+              getCurrentValue(bitcoinValue);
               break;
             }
           case 3:
@@ -147,17 +159,15 @@ public class Main {
                 name,
                 "initialInvestmentUSD.txt"
               );
+              float currentPrice = getDollarPrice(getData());
+              float currentValue = numOfBitcoin * currentPrice;
               System.out.println(name + ":");
               System.out.println("Original Investment: $" + originalInvestment);
               System.out.println("Number of bitcoins: " + numOfBitcoin);
+              System.out.println("Current Value: $" + currentValue);
               System.out.println(
-                "Current Value: $" + (numOfBitcoin * getDollarPrice(getData()))
+                "Change in value: $" + (currentValue - originalInvestment)
               );
-              System.out.println(
-                "Change in value: $" +
-                (getDollarPrice(getData()) - originalInvestment)
-              );
-
               break;
             }
           case 4:
